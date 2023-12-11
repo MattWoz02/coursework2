@@ -8,7 +8,7 @@ node{
        
     stage('Build docker image') {
 	script{
-        app = docker.build("MattWoz02/coursework2")
+        app = docker.build("mattwoz02/coursework2")
 }
     }
 
