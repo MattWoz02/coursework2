@@ -30,13 +30,11 @@ node {
 }
 
 	stage('Deploying to Kubernetes'){
-		    steps{
-			    echo "deploying..."
-			    script {
-				    sh "ssh ubuntu@52.3.252.77 \
-				    	kubectl set image deployments/devopscw2 server-app-l824t=mattwoz02/dockerfile:latest"
+		    echo "deploying..."
+		    script {
+			    sh "ssh ubuntu@52.3.252.77 \
+			    	kubectl set image deployments/devopscw2 server-app-l824t=mattwoz02/dockerfile:latest"
 			    }
 		    }
-	    }
-}                       	
+	    }	
   
