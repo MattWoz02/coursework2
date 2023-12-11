@@ -28,7 +28,7 @@ node {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
-        docker.image('dockerfile:latest').push()                    
+        docker.image('mattwoz02/dockerfile:latest').push()                    
 
     }
 }
