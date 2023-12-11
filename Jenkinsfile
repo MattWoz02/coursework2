@@ -14,8 +14,8 @@ node{
 
     stage('Push image to Dockerhub') {
             docker.withRegistry('https://registry.hub.docker.com', 'mattwoz02') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
+            	docker.image('dockerfile:latest').push()
+            
         }
     }
 }
