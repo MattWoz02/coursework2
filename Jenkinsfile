@@ -24,7 +24,9 @@ node {
     }
 
     stage('Push image') {
-    	 sh 'docker push mattwo02/dockerfile:latest'
+    	sh 'docker build -t mattwoz02/dockerfile:latest -f Dockerfile' 
+	sh 'docker login -u "mattwoz02" -p "200219771892" docker.io'
+	sh 'docker push mattwo02/dockerfile:latest'
 	                     
 	
     }
