@@ -1,38 +1,21 @@
-pipeline {
-    agent any
+node{
+    
+    stage('Get repo') {
+  
+        checkout scm
+    }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/MattWoz02/coursework2.git'
-            }
-        }
-
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    docker.build('dockerfile:latest')
-                }
-            }
-        }
-
-        stage('Test Docker Image') {
-            steps {
-                script {
-                    sh 'docker run dockerfile:latest'
-                }
-            }
-        }
-
-        stage('Push to DockerHub') {
-            steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'mattwoz02') {
-                        docker.image('dockerfile:latest').push()
-                    }
-                }
-            }
-        }
        
+    stage('Build docker image') {
+	script{
+        app = docker.build("MattWoz02/coursework2")
+}
+    }
+
+    stage('Push image to Dockerhub') {
+            docker.withRegistry('https://registry.hub.docker.com', 'mattwoz02') {
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
+        }
     }
 }
