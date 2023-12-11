@@ -14,7 +14,7 @@ node{
 
     stage('Push image to Dockerhub') {
             docker.withRegistry('https://registry.hub.docker.com', 'mattwoz02') {
-            	docker.image('dockerfile:latest').push()
+            	docker.image('dockerfile:latest1').push()
             
         }
     }
