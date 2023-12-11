@@ -24,7 +24,7 @@ node {
     }
 
     stage('Push image') {
-    	 sh 'docker push mattwo02/dockerfile:latest'
+    	 sh 'docker push mattwo02/dockerfile:latest1'
 	                     
 	
     }
