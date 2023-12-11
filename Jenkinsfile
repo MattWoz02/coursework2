@@ -23,11 +23,10 @@ node {
         }
     }
 
-    stage('Push image') {
-    	sh 'docker build -t mattwoz02/dockerfile:latest -f Dockerfile .' 
-	sh 'docker login -u "mattwoz02" -p "200219771892" docker.io'
-	sh 'docker push mattwo02/dockerfile:latest'
-	                     
-	
+	stage('Push image') {
+        withDockerRegistry([ mattwoz02: "200219771892", url: "https://hub.docker.com/repositories/mattwoz02/dockerfile" ]) {
+        bat "docker push mattwoz02/dockerfile:latest"
+        }
+}                   	
     }
 }
