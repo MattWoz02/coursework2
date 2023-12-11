@@ -24,9 +24,8 @@ node {
     }
 
     stage('Push image') {
-        steps{
-	 sh 'docker push mattwo02/dockerfile:latest'
-		}                     
+    	 sh 'docker push mattwo02/dockerfile:latest'
+	                     
 	}
     }
 }
