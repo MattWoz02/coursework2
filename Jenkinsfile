@@ -34,9 +34,9 @@ node {
    steps{
     sshagent(['k8s-jenkins'])
     {
-     sh 'scp -r -o StrictHostKeyChecking=no deploy.yaml username@52.3.252.77:/path'script{
+     sh 'scp -r -o StrictHostKeyChecking=no deploy.yaml username@100.26.18.152:/path'script{
       try{
-       sh 'ssh ubuntu@100.26.18.152 kubectl apply -f /path/deploy.yaml --kubeconfig=/path/kube.yaml'}catch(error)
+       sh 'ssh ubuntu@52.3.252.77 kubectl apply -f /path/deploy.yaml --kubeconfig=/path/kube.yaml'}catch(error)
        {
 	}
      }
