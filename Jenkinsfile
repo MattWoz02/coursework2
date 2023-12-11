@@ -29,21 +29,15 @@ node {
         }
 }
 
-	stage('Deploy to K8s')
-  {
-   steps{
-    sshagent(['k8s-jenkins'])
-    {
-     sh 'scp -r -o StrictHostKeyChecking=no deploy.yaml username@100.26.18.152:/path'script{
-      try{
-       sh 'ssh ubuntu@52.3.252.77 kubectl apply -f /path/deploy.yaml --kubeconfig=/path/kube.yaml'}catch(error)
-       {
-	}
-     }
+	stage('Deploying to Kubernetes'){
+		    steps{
+			    echo "deploying..."
+			    script {
+				    sh "ssh ubuntu@52.3.252.77 \
+				    	kubectl set image deployments/devopscw2 server-app-l824t=mattwoz02/dockerfile:latest"
+			    }
+		    }
+	    }
     }
-   }
-  }
-
-
 }                   	
   
