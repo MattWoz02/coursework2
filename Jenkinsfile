@@ -25,7 +25,7 @@ node {
 
 	stage('Push image') {
         withDockerRegistry([ mattwoz02: "200219771892", url: "https://hub.docker.com/repositories/mattwoz02/dockerfile" ]) {
-        bat "docker push mattwoz02/dockerfile:latest"
+        sh 'docker push mattwoz02/dockerfile:latest'
         }
 }
 }                   	
