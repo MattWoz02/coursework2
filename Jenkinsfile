@@ -28,5 +28,22 @@ node {
         sh 'docker push mattwoz02/dockerfile:latest'
         }
 }
+
+	stage('Deploy to K8s')
+  {
+   steps{
+    sshagent(['k8s-jenkins'])
+    {
+     sh 'scp -r -o StrictHostKeyChecking=no deploy.yaml username@52.3.252.77:/path'script{
+      try{
+       sh 'ssh ubuntu@100.26.18.152 kubectl apply -f /path/deploy.yaml --kubeconfig=/path/kube.yaml'}catch(error)
+       {
+	}
+     }
+    }
+   }
+  }
+
+
 }                   	
   
