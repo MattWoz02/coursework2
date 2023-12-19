@@ -28,7 +28,7 @@ node {
 		    echo "deploying..."
 		    script {
 			    sh "ssh ubuntu@54.89.108.19 \
-			    	kubectl set image deployment/coursework coursework-675b989f5c-vn4w7=mattwoz02/dockerfile:latest"
+			    	kubectl set image deployment/coursework dockerfile=mattwoz02/dockerfile:latest"
 			    }
 		    }
 	    }	
