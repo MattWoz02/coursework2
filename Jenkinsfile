@@ -32,7 +32,7 @@ node {
 	stage('Deploying to Kubernetes'){
 		    echo "deploying..."
 		    script {
-			    sh "ssh ubuntu@52.3.252.77 \
+			    sh "ssh ubuntu@54.89.108.19 \
 			    	kubectl set image coursework server-app-l824t=mattwoz02/dockerfile:latest"
 			    }
 		    }
